@@ -7,6 +7,7 @@ using FBLARoverAgenda_Backend.Domain.Entities.Audit;
 using FBLARoverAgenda_Backend.Domain.Entities.Identity;
 using FBLARoverAgenda_Backend.Domain.Entities.Serilog;
 using FBLARoverAgenda_Backend.Domain.Entities.Templates;
+using FBLARoverAgenda_Backend.Domain.Entities.Teacher;
 
 namespace FBLARoverAgenda_Backend.Infrastructure.Persistence.DbContexts;
 
@@ -28,6 +29,10 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, Applicati
     public DbSet<Template> Template { get; set; }
     public DbSet<Log> ServiceLog { get; set; }
     public DbSet<AuditLog> AuditLog { get; set; }
+
+    // Custom Models
+
+    public DbSet<Teacher> Teachers { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
