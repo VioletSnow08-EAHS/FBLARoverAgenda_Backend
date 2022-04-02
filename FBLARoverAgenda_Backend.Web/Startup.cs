@@ -28,6 +28,7 @@ using FBLARoverAgenda_Backend.Infrastructure.Common.Templates;
 using FBLARoverAgenda_Backend.Infrastructure.Common.Templates.Services;
 using FBLARoverAgenda_Backend.Infrastructure.Identity.Services;
 using FBLARoverAgenda_Backend.Web.Jobs;
+using Microsoft.AspNetCore.HttpOverrides;
 
 namespace FBLARoverAgenda_Backend.Web;
 
@@ -96,7 +97,13 @@ public class Startup
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app)
     {
-		app.UseExceptionHandler("/error/500");
+        app.UseForwardedHeaders(new ForwardedHeadersOptions
+        {
+            ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+        });
+
+        app.UseAuthentication();
+        app.UseExceptionHandler("/error/500");
         app.UseHsts();
 
         app.UseStatusCodePagesWithReExecute("/error/{0}");
