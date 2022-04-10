@@ -1,0 +1,39 @@
+﻿@model FBLARoverAgenda_Backend.Domain.Entities.Calendaric.Extracurricular
+
+@{
+    Layout = null;
+}
+
+
+<dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.MeetingDates)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.MeetingDates)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Teacher)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Teacher.Id)
+                </dd>
+</dl>
+    
+<form asp-action="Delete" id="deleteForm">
+                <input type="hidden" asp-for="Id"/>
+</form>
+
+

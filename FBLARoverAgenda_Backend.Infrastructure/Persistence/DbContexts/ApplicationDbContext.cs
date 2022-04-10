@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using RoverCore.Abstractions.Templates;
 using FBLARoverAgenda_Backend.Domain.Entities;
 using FBLARoverAgenda_Backend.Domain.Entities.Audit;
+using FBLARoverAgenda_Backend.Domain.Entities.Calendaric;
+using FBLARoverAgenda_Backend.Domain.Entities.FAQ;
 using FBLARoverAgenda_Backend.Domain.Entities.Identity;
 using FBLARoverAgenda_Backend.Domain.Entities.Serilog;
 using FBLARoverAgenda_Backend.Domain.Entities.Templates;
@@ -33,6 +35,9 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, Applicati
     // Custom Models
 
     public DbSet<Teacher> Teachers { get; set; }
+    public DbSet<Extracurricular> Extracurriculars { get; set; }
+    public DbSet<Event> Events { get; set; }
+    public DbSet<FAQ> FAQs { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
