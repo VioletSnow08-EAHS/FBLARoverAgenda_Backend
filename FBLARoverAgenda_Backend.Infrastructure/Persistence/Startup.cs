@@ -27,11 +27,6 @@ public static class Startup
 			options.UseSqlServer(configuration.GetConnectionString("AppContext"),
 				x => x.MigrationsAssembly("FBLARoverAgenda_Backend.Infrastructure"));
 		});
-		
-		services.AddDbContext<ApplicationDbContext>(options =>
-		{
-			options.
-		})
 
 		Audit.EntityFramework.Configuration.Setup()
 			.ForContext<ApplicationDbContext>(config => config
