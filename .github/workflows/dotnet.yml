@@ -35,6 +35,4 @@ jobs:
         run: dotnet publish -c Release -o /home/vinniehat/website
 
       - name: Restart the app
-        run: |
-          export XDG_RUNTIME_DIR=/run/user/$(id -u)
-          systemctl --user restart FBLA_RoverAgenda_Backend.service
+        run: systemctl restart FBLA_RoverAgenda_Backend.service
