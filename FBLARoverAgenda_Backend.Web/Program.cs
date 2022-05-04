@@ -104,23 +104,7 @@ public class Program
 
         return app;
     }
-    
-    public static WebApplication CreateWebHostBuilder(string[] args)
-    {
-        var builder = WebApplication.CreateBuilder();
 
-        builder.Configuration.AddEnvironmentVariables();
-        builder.Host.UseSerilog(Log.Logger);
-
-        var startup = new Startup(builder.Configuration);
-        startup.ConfigureServices(builder.Services);
-
-        var app = builder.Build();
-        startup.Configure(app);
-
-        return app;
-    }
-    
 
 }
 
