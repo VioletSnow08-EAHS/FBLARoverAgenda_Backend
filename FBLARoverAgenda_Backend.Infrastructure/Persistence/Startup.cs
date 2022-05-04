@@ -1,11 +1,12 @@
 ﻿using Audit.Core;
+using FBLARoverAgenda_Backend.Domain.Entities.Audit;
+using FBLARoverAgenda_Backend.Infrastructure.Persistence.DbContexts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using FBLARoverAgenda_Backend.Domain.Entities.Audit;
-using FBLARoverAgenda_Backend.Infrastructure.Persistence.DbContexts;
+
 
 namespace FBLARoverAgenda_Backend.Infrastructure.Persistence;
 
@@ -16,15 +17,16 @@ public static class Startup
 	/// </summary>
 	public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
 	{
+		var connectionString = configuration.GetConnectionString("AppContext");
 		services.AddDbContext<ApplicationDbContext>(options =>
 		{
-			options.UseSqlServer(configuration.GetConnectionString("AppContext"),
+			options.UseSqlServer(connectionString,
 				x => x.MigrationsAssembly("FBLARoverAgenda_Backend.Infrastructure"));
 		}, optionsLifetime: ServiceLifetime.Singleton, contextLifetime: ServiceLifetime.Scoped);
 
 		services.AddDbContextFactory<ApplicationDbContext>(options =>
 		{
-			options.UseSqlServer(configuration.GetConnectionString("AppContext"),
+			options.UseSqlServer(connectionString,
 				x => x.MigrationsAssembly("FBLARoverAgenda_Backend.Infrastructure"));
 		});
 
