@@ -27,12 +27,12 @@ jobs:
       - name: Install dependencies
         run: dotnet restore
 
-      - name: Build
-        run: dotnet build --configuration Release --no-restore
+#       - name: Build
+#         run: dotnet build --configuration Release --no-restore
 
       # We will output publish files to the folder we previously created
       - name: Publish
-        run: dotnet publish -c Release -o /home/vinniehat/website
+        run: dotnet publish -f=net6.0 -c Release -o /home/vinniehat/website
 
       - name: Restart the app
         run: systemctl restart FBLA_RoverAgenda_Backend.service
