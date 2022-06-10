@@ -14,6 +14,8 @@ using RoverCore.ToastNotification;
 using Serviced;
 using System;
 using System.IO;
+using System.Linq;
+using System.Net;
 using System.Reflection;
 using Hangfire;
 using Microsoft.EntityFrameworkCore;
@@ -92,6 +94,11 @@ public class Startup
             config.Position = NotyfPosition.BottomRight;
         });
 
+        services.Configure<ForwardedHeadersOptions>(options =>
+        {
+            options.KnownProxies.Add(IPAddress.Any);
+        });
+
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -101,6 +108,7 @@ public class Startup
         {
             ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
         });
+        
 
         app.UseAuthentication();
         app.UseExceptionHandler("/error/500");
@@ -108,7 +116,7 @@ public class Startup
 
         app.UseStatusCodePagesWithReExecute("/error/{0}");
 
-        app.UseHttpsRedirection();
+        // app.UseHttpsRedirection();
         app.UseStaticFiles();
         app.UseCookiePolicy();
         app.UseRouting();
