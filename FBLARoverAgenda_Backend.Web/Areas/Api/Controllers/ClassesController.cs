@@ -20,6 +20,7 @@ public class ClassesController : Controller
         _context = context;
     }
     // GET
+    [HttpGet]
     public List<FAQ> Index()
     {
         return _context.FAQs.ToList();

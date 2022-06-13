@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using FBLARoverAgenda_Backend.Domain.Entities.FAQ;
 using FBLARoverAgenda_Backend.Infrastructure.Persistence.DbContexts;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace FBLARoverAgenda_Backend.Web.Areas.Api.Controllers;
 
@@ -20,8 +22,9 @@ public class FAQsController : Controller
         _context = context;
     }
     // GET
-    public List<FAQ> Index()
+    [HttpGet]
+    public async Task<List<FAQ>> Index()
     {
-        return _context.FAQs.ToList();
+        return await _context.FAQs.ToListAsync();
     }
 }

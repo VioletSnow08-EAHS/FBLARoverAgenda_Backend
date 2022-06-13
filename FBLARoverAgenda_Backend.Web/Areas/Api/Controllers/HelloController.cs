@@ -38,6 +38,7 @@ public class HelloController : Controller
     }
 
     // GET: api/hello/protected
+    [HttpGet]
     public async Task<object> Protected()
     {
         var user = await _userManager.GetUserAsync(User);
