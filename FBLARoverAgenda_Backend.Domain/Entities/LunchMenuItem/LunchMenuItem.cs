@@ -1,6 +1,6 @@
 ﻿using Microsoft.Build.Framework;
 
-namespace FBLARoverAgenda_Backend.Domain.Entities;
+namespace FBLARoverAgenda_Backend.Domain.Entities.LunchMenuItem;
 
 public class LunchMenuItem
 {
