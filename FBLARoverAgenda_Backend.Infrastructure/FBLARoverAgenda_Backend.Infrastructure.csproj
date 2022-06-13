@@ -7,35 +7,35 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Audit.EntityFramework.Core" Version="19.0.7" />
+		<PackageReference Include="Audit.EntityFramework.Core" Version="19.1.4" />
 		<PackageReference Include="AutoMapper" Version="11.0.1" />
 		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.4" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.4" />
-		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration" Version="6.0.2" />
-		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Templating" Version="6.0.2" />
-		<PackageReference Include="MySqlConnector" Version="2.1.8" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.5" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.5" />
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration" Version="6.0.5" />
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Templating" Version="6.0.5" />
+		<PackageReference Include="MySqlConnector" Version="2.1.10" />
 		<PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.1" />
 		<PackageReference Include="RoverCore.FluentEmail.Core" Version="3.0.3" />
 		<PackageReference Include="RoverCore.FluentEmail.Liquid" Version="3.0.3" />
 		<PackageReference Include="RoverCore.FluentEmail.MailKit" Version="3.0.3" />
-		<PackageReference Include="Hangfire.SqlServer" Version="1.7.28" />
-		<PackageReference Include="MailKit" Version="3.1.1" />
-		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.2" />
-		<PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="6.0.2" />
-		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.2" />
-		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.2" />
-		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.4" Condition="'$(Configuration)' == 'Debug'" />
+		<PackageReference Include="Hangfire.SqlServer" Version="1.7.30" />
+		<PackageReference Include="MailKit" Version="3.3.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.5" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="6.0.5" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.5" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.5" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.5" Condition="'$(Configuration)' == 'Debug'" />
 		<PackageReference Include="Microsoft.AspNetCore.Razor.Runtime" Version="2.2.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.2" PrivateAssets="All" />
-		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.2" />
-		<PackageReference Include="HangFire" Version="1.7.28" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.5" PrivateAssets="All" />
+		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.5" />
+		<PackageReference Include="HangFire" Version="1.7.30" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="6.0.0" />
-		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.2" PrivateAssets="All" />
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.5" PrivateAssets="All" />
 		<PackageReference Include="RoverCore.Serviced" Version="1.0.9" />
 		<PackageReference Include="RoverCore.Abstractions" Version="1.0.2" />
-		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
 	</ItemGroup>
 
 	<ItemGroup>
