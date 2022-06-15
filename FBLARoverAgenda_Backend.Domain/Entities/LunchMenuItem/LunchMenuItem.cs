@@ -1,15 +1,15 @@
-﻿using Microsoft.Build.Framework;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace FBLARoverAgenda_Backend.Domain.Entities.LunchMenuItem;
 
 public class LunchMenuItem
 {
-    [Required]
+    [Key]
     public string Id { get; set; }
-    [Required]
+    [Microsoft.Build.Framework.Required]
     public string Name { get; set; }
-    [Required]
+    [Microsoft.Build.Framework.Required]
     public DateTime StartTime { get; set; }
-    [Required]
+    [Microsoft.Build.Framework.Required]
     public DateTime EndTime { get; set; }
 }

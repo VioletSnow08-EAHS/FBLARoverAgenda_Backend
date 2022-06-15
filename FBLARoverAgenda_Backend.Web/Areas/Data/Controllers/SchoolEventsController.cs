@@ -1,20 +1,18 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+using FBLARoverAgenda_Backend.Domain.Entities.SchoolEvent;
+using FBLARoverAgenda_Backend.Infrastructure.Common.Extensions;
+using FBLARoverAgenda_Backend.Infrastructure.Persistence.DbContexts;
+using FBLARoverAgenda_Backend.Web.Controllers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using RoverCore.BreadCrumbs.Services;
 using RoverCore.Datatables.DTOs;
 using RoverCore.Datatables.Extensions;
-using FBLARoverAgenda_Backend.Web.Controllers;
-using FBLARoverAgenda_Backend.Infrastructure.Common.Extensions;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
-using FBLARoverAgenda_Backend.Domain.Entities.SchoolEvent;
-using FBLARoverAgenda_Backend.Infrastructure.Persistence.DbContexts;
 
 namespace FBLARoverAgenda_Backend.Web.Areas.Data.Controllers;
 
@@ -47,7 +45,7 @@ public class SchoolEventsController : BaseController<SchoolEventsController>
     public IActionResult Index()
     {
         _breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
-			.Then("Manage SchoolEvents");       
+			.Then("Manage School Events");       
 		
 		// Fetch descriptive data from the index dto to build the datatables index
 		var metadata = DatatableExtensions.GetDtMetadata<SchoolEventsIndexViewModel>();
@@ -60,8 +58,8 @@ public class SchoolEventsController : BaseController<SchoolEventsController>
     {
         ViewData["AreaTitle"] = areaTitle;
         _breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
-            .ThenAction("Manage SchoolEvents", "Index", "SchoolEvents", new { Area = "Data" })
-            .Then("SchoolEvent Details");            
+            .ThenAction("Manage School Events", "Index", "SchoolEvents", new { Area = "Data" })
+            .Then("School Event Details");            
 
         if (id == null)
         {
@@ -82,8 +80,8 @@ public class SchoolEventsController : BaseController<SchoolEventsController>
     public IActionResult Create()
     {
         _breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
-            .ThenAction("Manage SchoolEvents", "Index", "SchoolEvents", new { Area = "Data" })
-            .Then("Create SchoolEvent");     
+            .ThenAction("Manage School Events", "Index", "SchoolEvents", new { Area = "Data" })
+            .Then("Create School Event");     
 
        return View();
 	}
@@ -98,8 +96,8 @@ public class SchoolEventsController : BaseController<SchoolEventsController>
         ViewData["AreaTitle"] = areaTitle;
 
         _breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
-        .ThenAction("Manage SchoolEvents", "Index", "SchoolEventsController", new { Area = "Data" })
-        .Then("Create SchoolEvent");     
+        .ThenAction("Manage School Events", "Index", "SchoolEventsController", new { Area = "Data" })
+        .Then("Create School Event");     
         
         // Remove validation errors from fields that aren't in the binding field list
         ModelState.Scrub(createBindingFields);           
@@ -122,8 +120,8 @@ public class SchoolEventsController : BaseController<SchoolEventsController>
         ViewData["AreaTitle"] = areaTitle;
 
         _breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
-        .ThenAction("Manage SchoolEvents", "Index", "SchoolEvents", new { Area = "Data" })
-        .Then("Edit SchoolEvent");     
+        .ThenAction("Manage School Events", "Index", "SchoolEvents", new { Area = "Data" })
+        .Then("Edit School Event");     
 
         if (id == null)
         {
@@ -150,8 +148,8 @@ public class SchoolEventsController : BaseController<SchoolEventsController>
         ViewData["AreaTitle"] = areaTitle;
 
         _breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
-        .ThenAction("Manage SchoolEvents", "Index", "SchoolEvents", new { Area = "Data" })
-        .Then("Edit SchoolEvent");  
+        .ThenAction("Manage School Events", "Index", "SchoolEvents", new { Area = "Data" })
+        .Then("Edit School Event");  
     
         if (id != schoolEvent.Id)
         {
@@ -169,29 +167,26 @@ public class SchoolEventsController : BaseController<SchoolEventsController>
         }
 
         // Remove validation errors from fields that aren't in the binding field list
-        ModelState.Scrub(editBindingFields);           
+        ModelState.Scrub(editBindingFields);
 
-        if (ModelState.IsValid)
+        if (!ModelState.IsValid) return View(schoolEvent);
+        try
         {
-            try
-            {
-                await _context.SaveChangesAsync();
-                _toast.Success("Updated successfully.");
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!SchoolEventExists(schoolEvent.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-            return RedirectToAction(nameof(Index));
+            await _context.SaveChangesAsync();
+            _toast.Success("Updated successfully.");
         }
-        return View(schoolEvent);
+        catch (DbUpdateConcurrencyException)
+        {
+            if (!SchoolEventExists(schoolEvent.Id))
+            {
+                return NotFound();
+            }
+            else
+            {
+                throw;
+            }
+        }
+        return RedirectToAction(nameof(Index));
     }
 
     // GET: Data/SchoolEvents/Delete/5
@@ -200,8 +195,8 @@ public class SchoolEventsController : BaseController<SchoolEventsController>
         ViewData["AreaTitle"] = areaTitle;
 
         _breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
-        .ThenAction("Manage SchoolEvents", "Index", "SchoolEvents", new { Area = "Data" })
-        .Then("Delete SchoolEvent");  
+        .ThenAction("Manage School Events", "Index", "SchoolEvents", new { Area = "Data" })
+        .Then("Delete School Event");  
 
         if (id == null)
         {
@@ -227,7 +222,7 @@ public class SchoolEventsController : BaseController<SchoolEventsController>
         if (schoolEvent != null) _context.SchoolEvents.Remove(schoolEvent);
         await _context.SaveChangesAsync();
         
-        _toast.Success("SchoolEvent deleted successfully");
+        _toast.Success("School Event deleted successfully");
 
         return RedirectToAction(nameof(Index));
     }
@@ -251,7 +246,7 @@ public class SchoolEventsController : BaseController<SchoolEventsController>
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error generating SchoolEvents index json");
+            _logger.LogError(ex, "Error generating School Events index json");
         }
         
         return StatusCode(500);

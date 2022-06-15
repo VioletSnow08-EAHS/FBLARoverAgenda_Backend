@@ -46,7 +46,7 @@ public class LunchMenuItemsController : BaseController<LunchMenuItemsController>
     public IActionResult Index()
     {
         _breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
-			.Then("Manage LunchMenuItems");       
+			.Then("Manage Lunch Menu Items");       
 		
 		// Fetch descriptive data from the index dto to build the datatables index
 		var metadata = DatatableExtensions.GetDtMetadata<LunchMenuItemsIndexViewModel>();
@@ -59,8 +59,8 @@ public class LunchMenuItemsController : BaseController<LunchMenuItemsController>
     {
         ViewData["AreaTitle"] = areaTitle;
         _breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
-            .ThenAction("Manage LunchMenuItems", "Index", "LunchMenuItems", new { Area = "Data" })
-            .Then("LunchMenuItem Details");            
+            .ThenAction("Manage Lunch Menu Items", "Index", "LunchMenuItems", new { Area = "Data" })
+            .Then("Lunch Menu Item Details");            
 
         if (id == null)
         {
@@ -81,8 +81,8 @@ public class LunchMenuItemsController : BaseController<LunchMenuItemsController>
     public IActionResult Create()
     {
         _breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
-            .ThenAction("Manage LunchMenuItems", "Index", "LunchMenuItems", new { Area = "Data" })
-            .Then("Create LunchMenuItem");     
+            .ThenAction("Manage Lunch Menu Items", "Index", "LunchMenuItems", new { Area = "Data" })
+            .Then("Create Lunch Menu Item");     
 
        return View();
 	}
@@ -97,19 +97,22 @@ public class LunchMenuItemsController : BaseController<LunchMenuItemsController>
         ViewData["AreaTitle"] = areaTitle;
 
         _breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
-        .ThenAction("Manage LunchMenuItems", "Index", "LunchMenuItemsController", new { Area = "Data" })
-        .Then("Create LunchMenuItem");     
+        .ThenAction("Manage Lunch Menu Items", "Index", "LunchMenuItemsController", new { Area = "Data" })
+        .Then("Create Lunch Menu Item");     
         
         // Remove validation errors from fields that aren't in the binding field list
-        ModelState.Scrub(createBindingFields);
+        ModelState.Scrub(createBindingFields);           
 
-        if (!ModelState.IsValid) return View(lunchMenuItem);
-        _context.Add(lunchMenuItem);
-        await _context.SaveChangesAsync();
+        if (ModelState.IsValid)
+        {
+            _context.Add(lunchMenuItem);
+            await _context.SaveChangesAsync();
             
-        _toast.Success("Created successfully.");
+            _toast.Success("Created successfully.");
             
-        return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index));
+        }
+        return View(lunchMenuItem);
     }
 
     // GET: Data/LunchMenuItems/Edit/5
@@ -118,8 +121,8 @@ public class LunchMenuItemsController : BaseController<LunchMenuItemsController>
         ViewData["AreaTitle"] = areaTitle;
 
         _breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
-        .ThenAction("Manage LunchMenuItems", "Index", "LunchMenuItems", new { Area = "Data" })
-        .Then("Edit LunchMenuItem");     
+        .ThenAction("Manage Lunch Menu Items", "Index", "LunchMenuItems", new { Area = "Data" })
+        .Then("Edit Lunch Menu Item");     
 
         if (id == null)
         {
@@ -146,8 +149,8 @@ public class LunchMenuItemsController : BaseController<LunchMenuItemsController>
         ViewData["AreaTitle"] = areaTitle;
 
         _breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
-        .ThenAction("Manage LunchMenuItems", "Index", "LunchMenuItems", new { Area = "Data" })
-        .Then("Edit LunchMenuItem");  
+        .ThenAction("Manage Lunch Menu Items", "Index", "LunchMenuItems", new { Area = "Data" })
+        .Then("Edit Lunch Menu Item");  
     
         if (id != lunchMenuItem.Id)
         {
@@ -192,8 +195,8 @@ public class LunchMenuItemsController : BaseController<LunchMenuItemsController>
         ViewData["AreaTitle"] = areaTitle;
 
         _breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
-        .ThenAction("Manage LunchMenuItems", "Index", "LunchMenuItems", new { Area = "Data" })
-        .Then("Delete LunchMenuItem");  
+        .ThenAction("Manage Lunch Menu Items", "Index", "LunchMenuItems", new { Area = "Data" })
+        .Then("Delete Lunch MenuI tem");  
 
         if (id == null)
         {
@@ -219,7 +222,7 @@ public class LunchMenuItemsController : BaseController<LunchMenuItemsController>
         if (lunchMenuItem != null) _context.LunchMenuItems.Remove(lunchMenuItem);
         await _context.SaveChangesAsync();
         
-        _toast.Success("LunchMenuItem deleted successfully");
+        _toast.Success("Lunch Menu Item deleted successfully");
 
         return RedirectToAction(nameof(Index));
     }
@@ -243,7 +246,7 @@ public class LunchMenuItemsController : BaseController<LunchMenuItemsController>
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error generating LunchMenuItems index json");
+            _logger.LogError(ex, "Error generating Lunch Menu Items index json");
         }
         
         return StatusCode(500);

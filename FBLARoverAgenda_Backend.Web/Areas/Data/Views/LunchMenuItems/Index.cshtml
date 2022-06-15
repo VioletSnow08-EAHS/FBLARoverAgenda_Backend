@@ -6,7 +6,7 @@
         var viewController = routeData["controller"].ToString();
         var viewArea = routeData.ContainsKey("area") ? routeData["area"].ToString() : "";
         
-        var recordsUrl = Url.Action("GetLucnhMenuItems");
+        var recordsUrl = Url.Action("GetLunchMenuItems");
         
 }
 
@@ -96,7 +96,7 @@
                     "serverSide": true,
                     "filter": true,
                     "ajax": {
-                        "url": "@Url.Action("GetLucnhMenuItems")",
+                        "url": "@Url.Action("GetLunchMenuItems")",
                         "type": "POST",
 						"data": {"__RequestVerificationToken" : token},
 						"datatype": "json"
