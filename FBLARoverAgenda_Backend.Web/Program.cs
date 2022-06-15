@@ -7,7 +7,9 @@ using System;
 using System.IO;
 using System.Linq;
 using FBLARoverAgenda_Backend.Infrastructure.Common.Extensions;
+using FBLARoverAgenda_Backend.Infrastructure.Persistence.DbContexts;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Hosting;
 using Serilog.Sinks.MSSqlServer;
 
@@ -106,5 +108,9 @@ public class Program
     }
 
 
+
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+            .UseStartup<Startup>();
 }
 

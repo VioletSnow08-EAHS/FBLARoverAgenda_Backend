@@ -8,6 +8,7 @@ namespace FBLARoverAgenda_Backend.Web.Controllers;
 public class ErrorController : Controller
 {
     [Route("error/{code}")]
+    [HttpGet]
     public IActionResult Index(int? code = null)
     {
         int[] available = { 401, 404, 500 };

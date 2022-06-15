@@ -1,30 +1,28 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using FBLARoverAgenda_Backend.Domain.Entities.FAQ;
 using FBLARoverAgenda_Backend.Infrastructure.Persistence.DbContexts;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace FBLARoverAgenda_Backend.Web.Areas.Api.Controllers;
 
 [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 [Produces("application/json")]
 [Area("Api")]
-public class FAQsController : Controller
+public class ClassesController : Controller
 {
     private readonly ApplicationDbContext _context;
 
-    public FAQsController(ApplicationDbContext context)
+    public ClassesController(ApplicationDbContext context)
     {
         _context = context;
     }
     // GET
     [HttpGet]
-    public async Task<List<FAQ>> Index()
+    public List<FAQ> Index()
     {
-        return await _context.FAQs.ToListAsync();
+        return _context.FAQs.ToList();
     }
 }
