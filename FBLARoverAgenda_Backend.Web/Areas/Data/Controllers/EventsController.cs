@@ -110,6 +110,7 @@ public class EventsController : BaseController<EventsController>
 
         if (ModelState.IsValid)
         {
+            @event.Id = Guid.NewGuid().ToString();
             _context.Add(@event);
             await _context.SaveChangesAsync();
             

@@ -108,6 +108,7 @@ public class ExtracurricularsController : BaseController<ExtracurricularsControl
 
         if (ModelState.IsValid)
         {
+            extracurricular.Id = Guid.NewGuid().ToString();
             _context.Add(extracurricular);
             await _context.SaveChangesAsync();
             

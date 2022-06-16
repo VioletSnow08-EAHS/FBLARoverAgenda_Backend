@@ -105,6 +105,7 @@ public class LunchMenuItemsController : BaseController<LunchMenuItemsController>
 
         if (ModelState.IsValid)
         {
+            lunchMenuItem.Id = Guid.NewGuid().ToString();
             _context.Add(lunchMenuItem);
             await _context.SaveChangesAsync();
             

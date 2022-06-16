@@ -115,6 +115,7 @@ public class ClassesController : BaseController<ClassesController>
 
         if (ModelState.IsValid)
         {
+            @class.Id = Guid.NewGuid().ToString();
             _context.Add(@class);
             await _context.SaveChangesAsync();
             

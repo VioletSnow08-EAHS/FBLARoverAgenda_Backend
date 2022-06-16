@@ -105,6 +105,7 @@ public class TeachersController : BaseController<TeachersController>
 
         if (ModelState.IsValid)
         {
+            teacher.Id = Guid.NewGuid().ToString();
             _context.Add(teacher);
             await _context.SaveChangesAsync();
             
