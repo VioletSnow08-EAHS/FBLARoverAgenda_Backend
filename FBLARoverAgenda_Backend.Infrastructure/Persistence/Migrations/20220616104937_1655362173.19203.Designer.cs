@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FBLARoverAgenda_Backend.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220616103822_1655361498.16791")]
-    partial class _165536149816791
+    [Migration("20220616104937_1655362173.19203")]
+    partial class _165536217319203
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -56,7 +56,7 @@ namespace FBLARoverAgenda_Backend.Infrastructure.Persistence.Migrations
 
                     b.HasKey("AuditId");
 
-                    b.ToTable("AuditLog", (string)null);
+                    b.ToTable("AuditLog");
                 });
 
             modelBuilder.Entity("FBLARoverAgenda_Backend.Domain.Entities.Calendaric.Event", b =>
@@ -90,7 +90,7 @@ namespace FBLARoverAgenda_Backend.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Events", (string)null);
+                    b.ToTable("Events");
                 });
 
             modelBuilder.Entity("FBLARoverAgenda_Backend.Domain.Entities.Calendaric.Extracurricular", b =>
@@ -118,7 +118,7 @@ namespace FBLARoverAgenda_Backend.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("TeacherId");
 
-                    b.ToTable("Extracurriculars", (string)null);
+                    b.ToTable("Extracurriculars");
                 });
 
             modelBuilder.Entity("FBLARoverAgenda_Backend.Domain.Entities.Class.Class", b =>
@@ -164,7 +164,7 @@ namespace FBLARoverAgenda_Backend.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Classes", (string)null);
+                    b.ToTable("Classes");
                 });
 
             modelBuilder.Entity("FBLARoverAgenda_Backend.Domain.Entities.ConfigurationItem", b =>
@@ -177,7 +177,7 @@ namespace FBLARoverAgenda_Backend.Infrastructure.Persistence.Migrations
 
                     b.HasKey("Key");
 
-                    b.ToTable("ConfigurationItem", (string)null);
+                    b.ToTable("ConfigurationItem");
                 });
 
             modelBuilder.Entity("FBLARoverAgenda_Backend.Domain.Entities.FAQ.FAQ", b =>
@@ -195,7 +195,7 @@ namespace FBLARoverAgenda_Backend.Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("FAQs", (string)null);
+                    b.ToTable("FAQs");
                 });
 
             modelBuilder.Entity("FBLARoverAgenda_Backend.Domain.Entities.Identity.ApplicationRole", b =>
@@ -420,7 +420,7 @@ namespace FBLARoverAgenda_Backend.Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("LunchMenuItems", (string)null);
+                    b.ToTable("LunchMenuItems");
                 });
 
             modelBuilder.Entity("FBLARoverAgenda_Backend.Domain.Entities.Member", b =>
@@ -454,7 +454,7 @@ namespace FBLARoverAgenda_Backend.Infrastructure.Persistence.Migrations
 
                     b.HasKey("MemberId");
 
-                    b.ToTable("Member", (string)null);
+                    b.ToTable("Member");
                 });
 
             modelBuilder.Entity("FBLARoverAgenda_Backend.Domain.Entities.SchoolEvent.SchoolEvent", b =>
@@ -476,7 +476,7 @@ namespace FBLARoverAgenda_Backend.Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SchoolEvents", (string)null);
+                    b.ToTable("SchoolEvents");
                 });
 
             modelBuilder.Entity("FBLARoverAgenda_Backend.Domain.Entities.Serilog.Log", b =>
@@ -510,7 +510,7 @@ namespace FBLARoverAgenda_Backend.Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ServiceLog", (string)null);
+                    b.ToTable("ServiceLog");
                 });
 
             modelBuilder.Entity("FBLARoverAgenda_Backend.Domain.Entities.Teacher.Teacher", b =>
@@ -536,7 +536,7 @@ namespace FBLARoverAgenda_Backend.Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Teachers", (string)null);
+                    b.ToTable("Teachers");
                 });
 
             modelBuilder.Entity("FBLARoverAgenda_Backend.Domain.Entities.Templates.Template", b =>
@@ -574,7 +574,7 @@ namespace FBLARoverAgenda_Backend.Infrastructure.Persistence.Migrations
                     b.HasIndex("Slug")
                         .IsUnique();
 
-                    b.ToTable("Template", (string)null);
+                    b.ToTable("Template");
                 });
 
             modelBuilder.Entity("FBLARoverAgenda_Backend.Domain.Entities.Calendaric.Event", b =>
