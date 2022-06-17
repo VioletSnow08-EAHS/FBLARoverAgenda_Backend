@@ -100,9 +100,10 @@ public class ClassesController : Controller
     public async Task<ApiResponse> Delete(string classId)
     {
         var userId = _userManager.GetUserId(User);
-        var @class = _context.Classes.Where(x => x.Id == classId && x.UserId == userId).FirstOrDefaultAsync();
+        var @class = await _context.Classes.Where(x => x.Id == classId && x.UserId == userId).FirstOrDefaultAsync();
 
-
+        if (@class == null) return new ApiResponse(HttpStatusCode.BadRequest, "Class does not exist.");
+        
         _context.Remove(@class);
         await _context.SaveChangesAsync();
 
