@@ -29,7 +29,7 @@ public class TeachersController : Controller
     }
 
     /// <summary>
-    /// Gets a specific teachers.
+    /// Gets a specific teacher.
     /// </summary>
     /// <param name="teacherId"></param>
     /// <returns></returns>
