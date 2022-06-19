@@ -17,19 +17,19 @@ namespace FBLARoverAgenda_Backend.Web.Areas.Api.Controllers;
 [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 [Produces("application/json")]
 [Area("Api")]
-public class LunchMenuItems : Controller
+public class LunchMenuItemsController : Controller
 {
     private readonly ApplicationDbContext _context;
     private readonly UserManager<ApplicationUser> _userManager;
 
-    public LunchMenuItems(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+    public LunchMenuItemsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
     {
         _context = context;
         _userManager = userManager;
     }
 
     /// <summary>
-    /// Gets a specific LunchMenuItem.
+    /// Gets a specific lunchmenuitem.
     /// </summary>
     /// <param name="itemId"></param>
     /// <returns></returns>
@@ -42,7 +42,7 @@ public class LunchMenuItems : Controller
             : new ApiResponse(HttpStatusCode.OK, item);
     }
     /// <summary>
-    /// Gets a all LunchMenuItems.
+    /// Gets all lunchmenuitems.
     /// </summary>
     /// <param></param>
     /// <returns></returns>
