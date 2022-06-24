@@ -14,6 +14,8 @@ namespace FBLARoverAgenda_Backend.Domain.Entities.Teacher
         [Required] public string LastName { get; set; }
         public string FullName => FirstName + " " + LastName;
         [Required][EmailAddress] public string Email { get; set; }
+        [Required] public string Prefix { get; set; } = "";
+        [Required] public string Department { get; set; } = "";
         [Required] public string Suffix { get; set; } = "";
     }
 }

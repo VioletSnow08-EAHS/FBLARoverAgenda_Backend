@@ -28,11 +28,12 @@ public class TeachersController : BaseController<TeachersController>
 	    public string Id { get; set; }
 	    public string FirstName { get; set; }
 	    public string LastName { get; set; }
-	    public string Email { get; set; }
+        public string Suffix { get; set; }
+        public string Email { get; set; }
 	}
 
-	private const string createBindingFields = "Id,FirstName,LastName,Email";
-    private const string editBindingFields = "Id,FirstName,LastName,Email";
+	private const string createBindingFields = "Id,FirstName,LastName,Suffix,Email";
+    private const string editBindingFields = "Id,FirstName,LastName,Suffix,Email";
     private const string areaTitle = "Teachers";
 
     private readonly ApplicationDbContext _context;
@@ -101,19 +102,16 @@ public class TeachersController : BaseController<TeachersController>
         .Then("Create Teacher");     
         
         // Remove validation errors from fields that aren't in the binding field list
-        ModelState.Scrub(createBindingFields);           
+        ModelState.Scrub(createBindingFields);
 
-        if (ModelState.IsValid)
-        {
-            teacher.Id = Guid.NewGuid().ToString();
-            _context.Add(teacher);
-            await _context.SaveChangesAsync();
+        if (!ModelState.IsValid) return View(teacher);
+        teacher.Id = Guid.NewGuid().ToString();
+        _context.Add(teacher);
+        await _context.SaveChangesAsync();
             
-            _toast.Success("Created successfully.");
+        _toast.Success("Created successfully.");
             
-                return RedirectToAction(nameof(Index));
-            }
-        return View(teacher);
+        return RedirectToAction(nameof(Index));
     }
 
     // GET: Teachers/Teachers/Edit/5
