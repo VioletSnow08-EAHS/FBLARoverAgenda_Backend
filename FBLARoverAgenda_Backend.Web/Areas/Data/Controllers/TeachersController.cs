@@ -32,8 +32,8 @@ public class TeachersController : BaseController<TeachersController>
         public string Email { get; set; }
 	}
 
-	private const string createBindingFields = "Id,FirstName,LastName,Suffix,Email";
-    private const string editBindingFields = "Id,FirstName,LastName,Suffix,Email";
+	private const string createBindingFields = "Id,FirstName,LastName,Prefix,Department,Suffix,Email";
+    private const string editBindingFields = "Id,FirstName,LastName,Prefix,Department,Suffix,Email";
     private const string areaTitle = "Teachers";
 
     private readonly ApplicationDbContext _context;
