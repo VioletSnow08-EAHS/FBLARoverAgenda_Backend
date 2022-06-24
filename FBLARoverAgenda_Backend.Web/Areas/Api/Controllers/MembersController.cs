@@ -27,7 +27,7 @@ public class MembersController : Controller
     /// <param name="model"></param>
     /// <returns></returns>
     [AllowAnonymous]
-    [HttpGet]
+    [HttpPost]
     public async Task<ApiResponse> Authenticate(AuthenticateRequest model)
     {
         var member = await _userService.Authenticate(model);
