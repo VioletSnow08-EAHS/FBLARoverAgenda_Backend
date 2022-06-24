@@ -36,7 +36,7 @@ public class ExtracurricularsController : Controller
     [HttpGet]
     public async Task<ApiResponse> Index(string extracurricularId)
     {
-        var item = await _context.Extracurriculars.Where(x => x.Id == extracurricularId).FirstOrDefaultAsync();
+        var item = await _context.Extracurriculars.Where(x => x.Id == extracurricularId).Include(x => x.Teacher).FirstOrDefaultAsync();
         return item == null
             ? new ApiResponse(HttpStatusCode.BadRequest, extracurricularId, "Extracurricular not found.")
             : new ApiResponse(HttpStatusCode.OK, item);
@@ -48,7 +48,7 @@ public class ExtracurricularsController : Controller
     /// <returns></returns>
     public async Task<ApiResponse> All()
     {
-        var list = await _context.Extracurriculars.ToListAsync();
+        var list = await _context.Extracurriculars.Include(x => x.Teacher).ToListAsync();
         return new ApiResponse(HttpStatusCode.OK, list);
     }
 }
