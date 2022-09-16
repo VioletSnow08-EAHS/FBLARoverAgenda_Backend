@@ -1,4 +1,4 @@
-# Rover Agenda - The #1 App for EAHS Students
+# Rover Agenda - The #1 App for EAHS Students (Backend)
 
 ## Addressing the prompt
 This year's prompt for the FBLA Mobile Application Development event was to create an app that would
